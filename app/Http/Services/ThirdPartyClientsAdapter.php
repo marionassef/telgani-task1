@@ -7,7 +7,7 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
 
-class ThirdPartyAdapter
+class ThirdPartyClientsAdapter
 {
     /**
      * @param $response

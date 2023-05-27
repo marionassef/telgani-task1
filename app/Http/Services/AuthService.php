@@ -18,7 +18,7 @@ class AuthService
     public function login($requestData): JsonResponse
     {
         $authClient = AuthClientFactory::create($requestData['login'], $requestData['password']);
-        $thirdPartyAdapterResponse = new ThirdPartyAdapter();
+        $thirdPartyAdapterResponse = new ThirdPartyClientsAdapter();
         return $thirdPartyAdapterResponse->processResponse($authClient);
     }
 }

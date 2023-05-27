@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Services\AuthService;
+use ErrorException;
+use External\Foo\Exceptions\AuthenticationFailedException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AuthController extends Controller
@@ -15,6 +17,10 @@ class AuthController extends Controller
         $this->authService = $authService;
     }
 
+    /**
+     * @throws AuthenticationFailedException
+     * @throws ErrorException
+     */
     public
     function login(LoginRequest $request): JsonResponse
     {
