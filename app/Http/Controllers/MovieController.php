@@ -2,15 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\MovieService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-    public function getTitles(Request $request): JsonResponse
-    {
-        // TODO
+    private MovieService $movieService;
 
-        return response()->json([]);
+    public function __construct(MovieService $movieService)
+    {
+        $this->movieService = $movieService;
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function getTitles(): JsonResponse
+    {
+        return $this->movieService->getTitles();
     }
 }
