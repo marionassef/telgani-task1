@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
+use App\Http\Services\AuthService;
+use ErrorException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AuthController extends Controller
 {
-    public function login(Request $request): JsonResponse
-    {
-        // TODO
+    private AuthService $authService;
 
-        return response()->json([
-            'status' => 'failure',
-        ]);
+    public function __construct(AuthService $authService)
+    {
+        $this->authService = $authService;
+    }
+
+    /**
+     * @throws ErrorException
+     */
+    public
+    function login(LoginRequest $request): JsonResponse
+    {
+        return $this->authService->login($request->validated());
     }
 }
